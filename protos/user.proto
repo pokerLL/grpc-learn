@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.deepwisdom.grpc.user;
+
+option java_multiple_files = true;
+
+service UserService{
+  rpc getUserId (IdRequest) returns (IdResponse);
+  rpc getUserMobiles (UserIdsRequest) returns (UserMobilesResponse);
+  rpc getUserByToken(UserTokenRequest) returns (UserInfoResponse);
+}
+message IdRequest{
+  string email = 1;
+}
+message IdResponse{
+  int32 userId = 1;
+}
+
+message UserIdsRequest {
+  repeated int32 userId = 1;
+
+}
+message UserMobilesResponse {
+  repeated string mobile = 1;
+}
+
+message UserTokenRequest {
+  string token = 1;
+}
+
+message UserInfoResponse {
+
+  int64 user_id = 1;
+
+  string user_name = 2;
+
+  string email = 3;
+
+  string mobile = 4;
+}
